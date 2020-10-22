@@ -90,8 +90,8 @@ INSERT INTO 'Comment' VALUES (null, 'This is my Subject 5', 'This is my comment 
 
 
 SELECT * FROM Category;
-SELECT * FROM Tag
-SELECT * FROM Post
+SELECT * FROM Tag;
+SELECT * FROM Post;
 SELECT * FROM TagPost;
 SELECT * FROM Comment;
 
