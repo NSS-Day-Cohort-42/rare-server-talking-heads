@@ -3,6 +3,7 @@ import json
 
 from categories import get_all_categories, get_single_category
 from posts import get_all_posts
+from users import create_user
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -117,7 +118,24 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		self.wfile.write(response.encode())  
 
-    
+	def do_POST(self):
+		self._set_headers(201)
+		content_len = int(self.headers.get('content-length', 0))
+		post_body = self.rfile.read(content_len)
+
+		# Convert JSON string to a Python dictionary
+		post_body = json.loads(post_body)
+
+		# Parse the URL
+		(resource, id) = self.parse_url(self.path)
+
+		# Initialize new resource
+		new_resource = None
+
+		if resource == "register":
+			new_resource = create_user(post_body)
+
+		self.wfile.write(f"{new_resource}".encode())
 
 	# def do_PUT(self):
 		

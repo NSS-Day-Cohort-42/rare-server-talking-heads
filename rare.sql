@@ -4,7 +4,8 @@ CREATE TABLE `User` (
     `email` TEXT NOT NULL,
     `password` TEXT NOT NULL,
     `first_name` TEXT NOT NULL,
-    `last_name` TEXT NOT NULL
+    `last_name` TEXT NOT NULL,
+    `bio` TEXT NOT NULL
 );
 
 CREATE TABLE `Category` (
@@ -47,16 +48,16 @@ CREATE TABLE `Comment` (
     FOREIGN KEY(`post_id`) REFERENCES `Post`(`id`)
 );
 
-insert into `User` values (1, 'tbarette0', 'tbarette0@hugedomains.com', 'eUqsHs9bPdtf', 'Thomasina', 'Barette');
-insert into `User`  values (2, 'tebenezer1', 'tebenezer1@twitter.com', 'F852pgF9ze9', 'Town', 'Ebenezer');
-insert into`User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo');
-insert into `User` values (4, 'bburnage3', 'bburnage3@reuters.com', 'M30RJ9Oq', 'Byron', 'Burnage');
-insert into `User` values (5, 'ohullins4', 'ohullins4@nymag.com', 'xZwWKlA1nb4m', 'Octavia', 'Hullins');
-insert into `User` values (6, 'jchaytor5', 'jchaytor5@dagondesign.com', 'urwjh8CDLuj', 'Jarad', 'Chaytor');
-insert into `User`  values (7, 'mmanes6', 'mmanes6@timesonline.co.uk', 'KoOhxCv3iU9', 'Morley', 'Manes');
-insert into `User`  values (8, 'dphelan7', 'dphelan7@netvibes.com', '750nSjm2Z6E', 'Dorthy', 'Phelan');
-insert into `User` values (9, 'klumox8', 'klumox8@yellowbook.com', '8VzOOu', 'Kayla', 'Lumox');
-insert into `User` values (10, 'chaselup9', 'chaselup9@imageshack.us', 'hK6DjKmCFwK1', 'Caryl', 'Haselup');
+insert into `User` values (1, 'tbarette0', 'tbarette0@hugedomains.com', 'eUqsHs9bPdtf', 'Thomasina', 'Barette', 'bio');
+insert into `User`  values (2, 'tebenezer1', 'tebenezer1@twitter.com', 'F852pgF9ze9', 'Town', 'Ebenezer', 'bio');
+insert into`User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo', 'bio');
+insert into `User` values (4, 'bburnage3', 'bburnage3@reuters.com', 'M30RJ9Oq', 'Byron', 'Burnage', 'bio');
+insert into `User` values (5, 'ohullins4', 'ohullins4@nymag.com', 'xZwWKlA1nb4m', 'Octavia', 'Hullins', 'bio');
+insert into `User` values (6, 'jchaytor5', 'jchaytor5@dagondesign.com', 'urwjh8CDLuj', 'Jarad', 'Chaytor', 'bio');
+insert into `User`  values (7, 'mmanes6', 'mmanes6@timesonline.co.uk', 'KoOhxCv3iU9', 'Morley', 'Manes', 'bio');
+insert into `User`  values (8, 'dphelan7', 'dphelan7@netvibes.com', '750nSjm2Z6E', 'Dorthy', 'Phelan', 'bio');
+insert into `User` values (9, 'klumox8', 'klumox8@yellowbook.com', '8VzOOu', 'Kayla', 'Lumox', 'bio');
+insert into `User` values (10, 'chaselup9', 'chaselup9@imageshack.us', 'hK6DjKmCFwK1', 'Caryl', 'Haselup', 'bio');
 
 INSERT INTO `Category` values (null, "Category 1");
 INSERT INTO `Category` values (null, "Category 2");
@@ -94,6 +95,8 @@ SELECT * FROM Tag;
 SELECT * FROM Post;
 SELECT * FROM TagPost;
 SELECT * FROM Comment;
+SELECT * FROM User;
+
 
 SELECT  
     p.id,
