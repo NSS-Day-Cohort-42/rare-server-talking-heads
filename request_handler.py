@@ -7,32 +7,7 @@ from posts import get_all_posts
 class HandleRequests(BaseHTTPRequestHandler):
 
 	def parse_url(self, path):
-		# path_params = path.split("/")
-		# resource = path_params[1]
-        
-		# if "?" in resource:
-		# 	# GIVEN: /customers?email=jenna@solis.com
-
-		# 	param = resource.split("?")[1]  # email=jenna@solis.com
-		# 	resource = resource.split("?")[0]  # 'customers'
-		# 	pair = param.split("=")  # [ 'email', 'jenna@solis.com' ]
-		# 	key = pair[0]  # 'email'
-		# 	value = pair[1]  # 'jenna@solis.com'
-
-		# 	return ( resource, key, value )
-
-		# # No query string parameter
-		# else:
-		# 	id = None
-
-		# 	try:
-		# 		id = int(path_params[2])
-		# 	except IndexError:
-		# 		pass  # No route parameter exists: /animals
-		# 	except ValueError:
-		# 		pass  # Request had trailing slash: /animals/
-
-		# 	return (resource, id)
+		
 		url_segments = path.split("/")
 		
 		query_params = ""
@@ -156,16 +131,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 	# 	# if resource == "animals":
 	# 	# 	update_animal(id, post_body)
 
-	# 	# elif resource == "locations":
-	# 	#     update_location(id, post_body)
-			
-	# 	# elif resource == "employees":
-	# 	#     update_employee(id, post_body)
-			
-	# 	# elif resource == "customers":
-	# 	#     update_customer(id, post_body)
-
-
 	# 	self.wfile.write("".encode())
 
     
@@ -176,15 +141,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 	# 	# if resource == "animals":
 	# 	# 	delete_animal(id)
-		
-	# 	# elif resource == "locations":
-	# 	#     delete_location(id)
-		
-	# 	# elif resource == "employees":
-	# 	#     delete_employee(id)
-
-	# 	# elif resource == "customers":
-	# 	#     delete_customer(id)
 		
 	# 	self.wfile.write("".encode())
 
