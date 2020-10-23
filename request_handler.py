@@ -3,6 +3,8 @@ import json
 
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 
+from posts import get_all_posts
+
 class HandleRequests(BaseHTTPRequestHandler):
 
 	def parse_url(self, path):
@@ -99,6 +101,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 				else:
 					response = f"{get_all_categories()}"
 			
+			if resource == "posts":
+				if id is not None:
+					response = "" # other posts requests will go here
+				else:
+					response = f"{get_all_posts()}"
 		
 		# elif len(parsed) == 3:
 		# 	(resource, key, value) = parsed
@@ -129,17 +136,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 			self._set_headers(204)
 		else:
 			self._set_headers(404)
-	# 	# elif resource == "locations":
-	# 	#     update_location(id, post_body)
-			
-	# 	# elif resource == "employees":
-	# 	#     update_employee(id, post_body)
-			
-	# 	# elif resource == "customers":
-	# 	#     update_customer(id, post_body)
+	
 
 
 		self.wfile.write("".encode())
+	# 	self.wfile.write("".encode())
 
     
 	def do_DELETE(self):
@@ -150,14 +151,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 		if resource == "categories":
 			delete_category(id)
 		
-	# 	# elif resource == "locations":
-	# 	#     delete_location(id)
-		
-	# 	# elif resource == "employees":
-	# 	#     delete_employee(id)
-
-	# 	# elif resource == "customers":
-	# 	#     delete_customer(id)
+	
 		
 		self.wfile.write("".encode())
 
@@ -181,6 +175,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 
 		self.wfile.write(f"{new_category}".encode())
+	# 	self.wfile.write("".encode())
 
 
 def main():
