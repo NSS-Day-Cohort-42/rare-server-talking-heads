@@ -2,6 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from categories import get_all_categories, get_single_category
+from posts import get_all_posts
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -124,6 +125,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 				else:
 					response = f"{get_all_categories()}"
 			
+			if resource == "posts":
+				if id is not None:
+					response = "" # other posts requests will go here
+				else:
+					response = f"{get_all_posts()}"
 		
 		# elif len(parsed) == 3:
 		# 	(resource, key, value) = parsed
