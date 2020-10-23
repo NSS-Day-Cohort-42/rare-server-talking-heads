@@ -75,3 +75,21 @@ def create_category(new_category):
         new_category['id'] = id
 
     return json.dumps(new_category)
+
+def update_category(id, new_category):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        UPDATE category
+            SET
+                name = ?
+            WHERE id = ?
+        """, (new_category['name'], id))
+
+        rows_effected = db_cursor.rowcount
+
+        if rows_effected == 0:
+            return False
+        else:
+            return True
