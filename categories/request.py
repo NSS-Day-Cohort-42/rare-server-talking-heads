@@ -48,3 +48,13 @@ def get_single_category(id):
         category = Category(data['id'], data['name'])
 
     return json.dumps(category.__dict__)
+
+
+def delete_category(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM category
+        WHERE id = ?
+        """, (id,))

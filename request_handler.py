@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
-from categories import get_all_categories, get_single_category
+from categories import get_all_categories, get_single_category, delete_category
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -163,13 +163,13 @@ class HandleRequests(BaseHTTPRequestHandler):
 	# 	self.wfile.write("".encode())
 
     
-	# def do_DELETE(self):
-	# 	self._set_headers(204)
+	def do_DELETE(self):
+		self._set_headers(204)
 
-	# 	(resource, id) = self.parse_url(self.path)
+		(resource, id) = self.parse_url(self.path)
 
-	# 	# if resource == "animals":
-	# 	# 	delete_animal(id)
+		if resource == "categories":
+			delete_category(id)
 		
 	# 	# elif resource == "locations":
 	# 	#     delete_location(id)
@@ -180,7 +180,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 	# 	# elif resource == "customers":
 	# 	#     delete_customer(id)
 		
-	# 	self.wfile.write("".encode())
+		self.wfile.write("".encode())
 
 
 def main():
