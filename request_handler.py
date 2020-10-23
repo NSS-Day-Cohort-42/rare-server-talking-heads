@@ -1,37 +1,12 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
-from categories import get_all_categories, get_single_category, delete_category
+from categories import get_all_categories, get_single_category, delete_category, create_category
 
 class HandleRequests(BaseHTTPRequestHandler):
 
 	def parse_url(self, path):
-		# path_params = path.split("/")
-		# resource = path_params[1]
-        
-		# if "?" in resource:
-		# 	# GIVEN: /customers?email=jenna@solis.com
-
-		# 	param = resource.split("?")[1]  # email=jenna@solis.com
-		# 	resource = resource.split("?")[0]  # 'customers'
-		# 	pair = param.split("=")  # [ 'email', 'jenna@solis.com' ]
-		# 	key = pair[0]  # 'email'
-		# 	value = pair[1]  # 'jenna@solis.com'
-
-		# 	return ( resource, key, value )
-
-		# # No query string parameter
-		# else:
-		# 	id = None
-
-		# 	try:
-		# 		id = int(path_params[2])
-		# 	except IndexError:
-		# 		pass  # No route parameter exists: /animals
-		# 	except ValueError:
-		# 		pass  # Request had trailing slash: /animals/
-
-		# 	return (resource, id)
+		
 		url_segments = path.split("/")
 		
 		query_params = ""
@@ -181,6 +156,27 @@ class HandleRequests(BaseHTTPRequestHandler):
 	# 	#     delete_customer(id)
 		
 		self.wfile.write("".encode())
+
+	def do_POST(self):
+		self._set_headers(201)
+		content_len = int(self.headers.get('content-length', 0))
+		post_body = self.rfile.read(content_len)
+
+		# Convert JSON string to a Python dictionary
+		post_body = json.loads(post_body)
+
+		# Parse the URL
+		(resource, id) = self.parse_url(self.path)
+
+
+		new_category = None
+
+        
+		if resource == "categories":
+			new_category = create_category(post_body)
+
+
+		self.wfile.write(f"{new_category}".encode())
 
 
 def main():
