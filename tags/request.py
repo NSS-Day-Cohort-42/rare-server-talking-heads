@@ -10,7 +10,7 @@ def get_all_tags():
 
         db_cursor.execute("""
         SELECT
-            t.id
+            t.id,
             t.name
         FROM Tag t
         """)
