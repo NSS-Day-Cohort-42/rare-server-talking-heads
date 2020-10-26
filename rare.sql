@@ -59,7 +59,7 @@ insert into `User`  values (8, 'dphelan7', 'dphelan7@netvibes.com', '750nSjm2Z6E
 insert into `User` values (9, 'klumox8', 'klumox8@yellowbook.com', '8VzOOu', 'Kayla', 'Lumox', 'bio');
 insert into `User` values (10, 'chaselup9', 'chaselup9@imageshack.us', 'hK6DjKmCFwK1', 'Caryl', 'Haselup', 'bio');
 
-INSERT INTO `Category` values (null, "Category 1");
+INSERT INTO `Category` values (1, "Category 1");
 INSERT INTO `Category` values (null, "Category 2");
 INSERT INTO `Category` values (null, "Category 3");
 INSERT INTO `Category` values (null, "Category 4");
@@ -150,5 +150,35 @@ INSERT INTO `Post` VALUES (6, 'The Title Of This Fake Post', '<p>Lorem ipsum dol
 
 <p>Gravida neque convallis a cras. Fermentum leo vel orci porta non pulvinar neque. Malesuada pellentesque elit eget gravida. Sit amet consectetur adipiscing elit pellentesque. Nulla facilisi cras fermentum odio eu. Pulvinar pellentesque habitant morbi tristique senectus et. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Vel pretium lectus quam id leo in vitae turpis massa. Ultricies leo integer malesuada nunc vel. Netus et malesuada fames ac turpis egestas sed. Arcu risus quis varius quam quisque.</p>
 
-<p>Mauris pharetra et ultrices neque ornare aenean. Pharetra convallis posuere morbi leo urna molestie at elementum eu. Pulvinar mattis nunc sed blandit libero. Egestas dui id ornare arcu odio. Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. In ornare quam viverra orci sagittis. Arcu odio ut sem nulla pharetra diam sit amet nisl. Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Nisi quis eleifend quam adipiscing. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Magna fringilla urna porttitor rhoncus dolor purus non enim. Volutpat est velit egestas dui id ornare arcu odio. Quis enim lobortis scelerisque fermentum dui. Amet nisl purus in mollis nunc. Adipiscing at in tellus integer feugiat scelerisque varius morbi enim. Adipiscing elit pellentesque habitant morbi tristique. Blandit turpis cursus in hac habitasse platea dictumst quisque sagittis.</p>', '2020-10-25', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', 1, 1)
+<p>Mauris pharetra et ultrices neque ornare aenean. Pharetra convallis posuere morbi leo urna molestie at elementum eu. Pulvinar mattis nunc sed blandit libero. Egestas dui id ornare arcu odio. Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. In ornare quam viverra orci sagittis. Arcu odio ut sem nulla pharetra diam sit amet nisl. Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Nisi quis eleifend quam adipiscing. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Magna fringilla urna porttitor rhoncus dolor purus non enim. Volutpat est velit egestas dui id ornare arcu odio. Quis enim lobortis scelerisque fermentum dui. Amet nisl purus in mollis nunc. Adipiscing at in tellus integer feugiat scelerisque varius morbi enim. Adipiscing elit pellentesque habitant morbi tristique. Blandit turpis cursus in hac habitasse platea dictumst quisque sagittis.</p>', '2020-10-25', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', 1, 1);
 
+SELECT 
+    com.id,
+    com.subject,
+    com.content,
+    com.user_id,
+    com.post_id as PostIdentifier,
+    u.user_name as UserName
+    
+FROM Comment com
+JOIN User u on u.id = com.user_id
+
+WHERE com.post_id = 2;   
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+JOIN Comment com on com.post_id = p.id
+WHERE p.id = 1;

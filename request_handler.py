@@ -6,6 +6,7 @@ from categories import get_all_categories, get_single_category, delete_category,
 
 from posts import get_all_posts, get_single_post, get_posts_by_category
 from users import create_user, get_user_by_email
+from comments import get_comments_by_post
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -82,6 +83,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 			if key == "category_id" and resource == "posts":
 				response = get_posts_by_category(value)
+			
+			if key == "post_id" and resource == "comments":
+				response = get_comments_by_post(value)
 			
 
 		self.wfile.write(response.encode())  
