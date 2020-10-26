@@ -3,64 +3,39 @@ import json
 
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 from posts import get_all_posts, get_single_post
-from users import create_user
+from users import create_user, get_user_by_email
 
 class HandleRequests(BaseHTTPRequestHandler):
 
 	def parse_url(self, path):
-		
-		url_segments = path.split("/")
-		
-		query_params = ""
-		parameters = []
-		request = {}
-		request["resource"] = url_segments[1]
-		if len(url_segments) > 2:
-			params = url_segments[2]
-			if "?" in params:
-				[request["id"], query_params] = params.split("?")
-				parameters = query_params.split("&")
+		path_params = path.split("/")
+		resource = path_params[1]
 
-				request["query_params"] = []
+		# Check if there is a query string parameter
+		if "?" in resource:
+			# GIVEN: /customers?email=jenna@solis.com
 
-				for param in parameters:
-					[ key, value ] = param.split("=")
-					request["query_params"].append({ key: value })
-				
-				return request
+			param = resource.split("?")[1]  # email=jenna@solis.com
+			resource = resource.split("?")[0]  # 'customers'
+			pair = param.split("=")  # [ 'email', 'jenna@solis.com' ] 
+			key = pair[0]  # 'email' 
+			value = pair[1]  # 'jenna@solis.com'
 
-			elif "?" in url_segments[1]:
-				[request["resource"], query_params] = url_segments[1].split("?")
-				parameters = query_params.split("&")
 
-				request["query_params"] = []
+			return ( resource, key, value )
 
-				for param in parameters:
-					[ key, value ] = param.split("=")
-					request["query_params"].append({ key: value })
-
-				return request
-			
-
-			else:
-			#parse the params value to integer and if you can then add to response to object under key of 'id'
-				
-				id = None
-
-				try:
-					id = int(params)
-				except IndexError:
-					pass  # No route parameter exists: /animals
-				except ValueError:
-					pass  # Request had trailing slash: /animals/
-				
-				return (request['resource'], id)
-
-	# # No query string parameter
+		# No query string parameter
 		else:
 			id = None
 
-			return (request['resource'], id)
+			try:
+				id = int(path_params[2])
+			except IndexError:
+				pass  # No route parameter exists: /animals
+			except ValueError:
+				pass  # Request had trailing slash: /animals/
+
+			return (resource, id)
 
     # Here's a class function
 	def _set_headers(self, status):
@@ -100,11 +75,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 				else:
 					response = f"{get_all_posts()}"
 		
-		# elif len(parsed) == 3:
-		# 	(resource, key, value) = parsed
+		elif len(parsed) == 3:
+			(resource, key, value) = parsed
 
-		# 	if key == "email" and resource == "customers":
-		# 		response = get_customer_by_email(value)
+			if key == "email" and resource == "users":
+				response = get_user_by_email(value)
 			
 
 		self.wfile.write(response.encode())  
