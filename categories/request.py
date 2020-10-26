@@ -48,3 +48,48 @@ def get_single_category(id):
         category = Category(data['id'], data['name'])
 
     return json.dumps(category.__dict__)
+
+
+def delete_category(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM category
+        WHERE id = ?
+        """, (id,))
+
+def create_category(new_category):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        INSERT INTO category
+            (name)
+        VALUES
+            (?)
+        """, (new_category['name'],))
+
+        id = db_cursor.lastrowid
+
+        new_category['id'] = id
+
+    return json.dumps(new_category)
+
+def update_category(id, new_category):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        UPDATE category
+            SET
+                name = ?
+            WHERE id = ?
+        """, (new_category['name'], id))
+
+        rows_effected = db_cursor.rowcount
+
+        if rows_effected == 0:
+            return False
+        else:
+            return True
