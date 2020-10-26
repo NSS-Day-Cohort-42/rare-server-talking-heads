@@ -3,7 +3,8 @@ import json
 
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 
-from posts import get_all_posts, get_posts_by_category
+
+from posts import get_all_posts, get_single_post, get_posts_by_category
 from users import create_user, get_user_by_email
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -72,7 +73,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 			
 			if resource == "posts":
 				if id is not None:
-					response = "" # other posts requests will go here
+					response = f"{get_single_post(id)}"
 				else:
 					response = f"{get_all_posts()}"
 		
