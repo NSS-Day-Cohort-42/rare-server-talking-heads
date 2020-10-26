@@ -133,12 +133,17 @@ SELECT
     p.content,
     p.pubdate,
     p.header_img,
+    u.user_name,
     p.user_id,
-    p.category_id,
-    u.user_name AS author_name,
-    c.name AS category_name
+    c.name AS category_name,
+    p.category_id
 FROM Post p
 JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+WHERE c.id = 2;
+
+
+    
 JOIN Category c ON c.id = p.category_id;
 
 INSERT INTO `Post` VALUES (6, 'The Title Of This Fake Post', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem integer vitae justo eget magna fermentum iaculis eu. Enim nunc faucibus a pellentesque sit amet porttitor eget. Facilisi etiam dignissim diam quis enim. Interdum posuere lorem ipsum dolor sit. Ac tortor vitae purus faucibus ornare. Mattis rhoncus urna neque viverra justo. Nec ultrices dui sapien eget mi proin sed. Augue neque gravida in fermentum et sollicitudin ac orci phasellus. In eu mi bibendum neque. Ultrices eros in cursus turpis. Nec ullamcorper sit amet risus nullam eget felis eget. Molestie at elementum eu facilisis sed odio morbi quis. Morbi tempus iaculis urna id volutpat lacus laoreet. Et sollicitudin ac orci phasellus egestas tellus. Tincidunt tortor aliquam nulla facilisi cras. Adipiscing tristique risus nec feugiat in fermentum posuere. Lectus arcu bibendum at varius vel.</p>
