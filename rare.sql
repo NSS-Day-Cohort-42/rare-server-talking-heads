@@ -76,7 +76,7 @@ insert into `Post`  values (2, 'imcquode1', 'Donec scelerisque urna est, vitae v
 insert into `Post` values (3, 'bquare2', 'Praesent dapibus odio eget risus ultrices viverra. Aliquam erat volutpat. Pellentesque quis libero pretium, finibus metus quis, volutpat velit. Nam nunc arcu, tempus sit amet vestibulum vitae, placerat sit amet ligula. Praesent nunc odio, aliquam ac iaculis vitae, rutrum a elit. Nam quam enim, egestas vitae bibendum non, lobortis in nisi. Praesent ac euismod turpis. Sed suscipit neque ex, vel fermentum ante condimentum nec. Pellentesque sodales luctus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque sem turpis, rhoncus vitae feugiat ut, laoreet ac lectus. Curabitur quam felis, vestibulum eu tortor eu, finibus feugiat magna. Nulla enim metus, ultrices lobortis tempor molestie, facilisis eu lacus.', '2020-3-1', null, 3, 3);
 insert into `Post`  values (4, 'tlauridsen3', 'Suspendisse magna ligula, laoreet sed tristique et, varius nec velit. Praesent nisi diam, imperdiet ut eleifend sed, porttitor eu eros. Mauris gravida, massa sed sollicitudin aliquet, augue libero porta urna, vel convallis arcu ligula ac nibh. Suspendisse odio lectus, efficitur sit amet auctor nec, dignissim non eros. Suspendisse ultrices eros ac porta accumsan. In id tempor eros. Donec vel orci sed ligula rhoncus tristique. Nam eu accumsan augue. Nullam sollicitudin odio nec luctus dignissim. Ut sed velit sed dolor aliquam placerat vel eu turpis. Phasellus pretium tellus in est tempus, eget vestibulum ligula luctus. Donec sed arcu non justo tempus semper. Nulla ut urna neque.', '2020-4-1', null, 4, 4);
 insert into `Post` values (5, 'dsloper4', 'Pellentesque purus tellus, dignissim vitae iaculis a, elementum ut erat. Curabitur lobortis egestas nibh ac mattis. Vestibulum porta sed magna nec elementum. Aenean bibendum iaculis lacus. Phasellus suscipit, nibh ac pretium porta, eros mi tincidunt diam, vel molestie metus justo in sem. Cras fermentum enim convallis sollicitudin vestibulum. Praesent non tempus ex.', '2020-5-1', null, 5, 5);
-
+insert into `Post` values (6, 'tbarette0', 'Test Post', '2020-05-01',null, 1,2 )
 INSERT INTO `TagPost` values (null, 1,3);
 INSERT INTO `TagPost` values (null, 2,1 );
 INSERT INTO `TagPost` values (null, 3, 1);
@@ -125,10 +125,14 @@ SELECT
     p.content,
     p.pubdate,
     p.header_img,
+    u.user_name,
     p.user_id,
-    p.category_id,
-    u.user_name AS author_name,
-    c.name AS category_name
+    c.name AS category_name,
+    p.category_id
 FROM Post p
 JOIN User u ON u.id = p.user_id
-JOIN Category c ON c.id = p.category_id;
+JOIN Category c ON c.id = p.category_id
+WHERE c.id = 2;
+
+
+    
