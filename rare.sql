@@ -119,6 +119,8 @@ JOIN Comment c ON c.post_id = p.id
 JOIN User u ON u.id = c.user_id
 WHERE p.id = 2;
 
+DROP TABLE User
+
 SELECT
     p.id,
     p.title,
