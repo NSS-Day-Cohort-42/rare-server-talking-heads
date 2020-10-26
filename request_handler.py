@@ -5,6 +5,7 @@ from categories import get_all_categories, get_single_category, delete_category,
 
 from posts import get_all_posts
 from users import create_user
+from tags import get_all_tags, create_tag
 
 class HandleRequests(BaseHTTPRequestHandler):
 
