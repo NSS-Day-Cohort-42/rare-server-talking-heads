@@ -30,8 +30,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 				
 				return request
 
-			
-
 			elif "?" in url_segments[1]:
 				[request["resource"], query_params] = url_segments[1].split("?")
 				parameters = query_params.split("&")
@@ -41,7 +39,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 				for param in parameters:
 					[ key, value ] = param.split("=")
 					request["query_params"].append({ key: value })
-
 
 				return request
 			
@@ -64,8 +61,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 		else:
 			id = None
 
-			
-
 			return (request['resource'], id)
 
     # Here's a class function
@@ -84,17 +79,15 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 
 	def do_GET(self):
-			# Set the response code to 'Ok'
+		# Set the response code to 'Ok'
 		self._set_headers(200)
 		response = {}
-		
 
 		parsed = self.parse_url(self.path)
 
 		if len(parsed) == 2:
 			(resource, id) = parsed 
 
-			
 			if resource == "categories":
 				if id is not None:
 					response = f"{get_single_category(id)}"
@@ -113,8 +106,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		# 	if key == "email" and resource == "customers":
 		# 		response = get_customer_by_email(value)
-			
-				
 			
 
 		self.wfile.write(response.encode())  
@@ -136,6 +127,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 		if resource == "register":
 			new_resource = create_user(post_body)
 
+		if resource == "categories":
+			new_category = create_category(post_body)
+
 		self.wfile.write(f"{new_resource}".encode())
 
 	def do_PUT(self):
@@ -149,17 +143,12 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			success = update_category(id, post_body)
-
-		if success:
-			self._set_headers(204)
-		else:
-			self._set_headers(404)
-	
-
+			if success:
+				self._set_headers(204)
+			else:
+				self._set_headers(404)
 
 		self.wfile.write("".encode())
-	# 	self.wfile.write("".encode())
-
     
 	def do_DELETE(self):
 		self._set_headers(204)
@@ -168,32 +157,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			delete_category(id)
-		
-	
-		
+
 		self.wfile.write("".encode())
-
-	def do_POST(self):
-		self._set_headers(201)
-		content_len = int(self.headers.get('content-length', 0))
-		post_body = self.rfile.read(content_len)
-
-		# Convert JSON string to a Python dictionary
-		post_body = json.loads(post_body)
-
-		# Parse the URL
-		(resource, id) = self.parse_url(self.path)
-
-
-		new_category = None
-
-        
-		if resource == "categories":
-			new_category = create_category(post_body)
-
-
-		self.wfile.write(f"{new_category}".encode())
-	# 	self.wfile.write("".encode())
 
 
 def main():

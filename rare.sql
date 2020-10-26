@@ -118,3 +118,17 @@ FROM Post p
 JOIN Comment c ON c.post_id = p.id 
 JOIN User u ON u.id = c.user_id
 WHERE p.id = 2;
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    p.user_id,
+    p.category_id,
+    u.user_name AS author_name,
+    c.name AS category_name
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id;
