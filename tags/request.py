@@ -21,7 +21,7 @@ def get_all_tags():
 
         for row in dataset:
 
-            tag = Tag(row['id'], row['tag'])
+            tag = Tag(row['id'], row['name'])
             tags.append(tag.__dict__)
 
     return json.dumps(tags)
