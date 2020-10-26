@@ -3,7 +3,8 @@ import json
 
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 
-from posts import get_all_posts
+
+from posts import get_all_posts, get_single_post, get_posts_by_category
 from users import create_user, get_user_by_email
 from tags import get_all_tags, create_tag
 
@@ -73,7 +74,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 			
 			if resource == "posts":
 				if id is not None:
-					response = "" # other posts requests will go here
+					response = f"{get_single_post(id)}"
 				else:
 					response = f"{get_all_posts()}"
 
@@ -83,8 +84,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 		elif len(parsed) == 3:
 			(resource, key, value) = parsed
 
-			if key == "email" and resource == "users":
-				response = get_user_by_email(value)
+			if key == "category_id" and resource == "posts":
+				response = get_posts_by_category(value)
 			
 
 		self.wfile.write(response.encode())  
