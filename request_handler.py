@@ -5,6 +5,7 @@ from categories import get_all_categories, get_single_category, delete_category,
 
 from posts import get_all_posts
 from users import create_user, get_user_by_email
+from tags import get_all_tags, create_tag
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -75,6 +76,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 					response = "" # other posts requests will go here
 				else:
 					response = f"{get_all_posts()}"
+
+			if resource == "tags":
+				response = f"{get_all_tags()}"
 		
 		elif len(parsed) == 3:
 			(resource, key, value) = parsed
@@ -104,6 +108,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			new_category = create_category(post_body)
+
+		if resource == "tags":
+			new_resource = create_tag(post_body)
 
 		self.wfile.write(f"{new_resource}".encode())
 
