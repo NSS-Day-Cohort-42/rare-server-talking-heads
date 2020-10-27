@@ -50,7 +50,7 @@ CREATE TABLE `Comment` (
 
 insert into `User` values (1, 'tbarette0', 'tbarette0@hugedomains.com', 'eUqsHs9bPdtf', 'Thomasina', 'Barette', 'bio');
 insert into `User`  values (2, 'tebenezer1', 'tebenezer1@twitter.com', 'F852pgF9ze9', 'Town', 'Ebenezer', 'bio');
-insert into`User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo', 'bio');
+insert into `User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo', 'bio');
 insert into `User` values (4, 'bburnage3', 'bburnage3@reuters.com', 'M30RJ9Oq', 'Byron', 'Burnage', 'bio');
 insert into `User` values (5, 'ohullins4', 'ohullins4@nymag.com', 'xZwWKlA1nb4m', 'Octavia', 'Hullins', 'bio');
 insert into `User` values (6, 'jchaytor5', 'jchaytor5@dagondesign.com', 'urwjh8CDLuj', 'Jarad', 'Chaytor', 'bio');
