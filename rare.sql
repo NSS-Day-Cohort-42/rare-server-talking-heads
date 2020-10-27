@@ -209,3 +209,20 @@ JOIN User u ON u.id = p.user_id
 JOIN Category c ON c.id = p.category_id
 JOIN Comment com on com.post_id = p.id
 WHERE p.id = 1;
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+WHERE c.id = 1;

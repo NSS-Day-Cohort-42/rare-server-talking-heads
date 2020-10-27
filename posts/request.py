@@ -81,8 +81,8 @@ def get_posts_by_category(id):
             u.user_name,
             p.user_id,
             c.name AS category_name,
-            p.category_id,
-			com.content as CommentStuff
+            p.category_id
+			
         FROM Post p
         JOIN User u ON u.id = p.user_id
         JOIN Category c ON c.id = p.category_id
