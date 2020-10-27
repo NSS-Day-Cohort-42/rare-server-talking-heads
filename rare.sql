@@ -179,3 +179,4 @@ SELECT * FROM Comment;
 --   *** (End of DELETE POST test) ***
 
 
+DELETE From Tag;
