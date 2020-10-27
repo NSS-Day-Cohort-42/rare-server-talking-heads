@@ -13,6 +13,7 @@ def get_all_tags():
             t.id,
             t.name
         FROM Tag t
+        ORDER BY t.name ASC
         """)
 
         tags = []
