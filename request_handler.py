@@ -4,7 +4,7 @@ import json
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 
 
-from posts import get_all_posts, get_single_post, get_posts_by_category
+from posts import get_all_posts, get_single_post, get_posts_by_category, create_new_post
 from users import create_user, get_user_by_email
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -83,6 +83,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 			if key == "category_id" and resource == "posts":
 				response = get_posts_by_category(value)
 			
+			if key == "email" and resource == "users":
+				response = get_user_by_email(value)
+			
 
 		self.wfile.write(response.encode())  
 
@@ -105,6 +108,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			new_category = create_category(post_body)
+
+		if resource == "posts":
+			new_resource = create_new_post(post_body)
 
 		self.wfile.write(f"{new_resource}".encode())
 

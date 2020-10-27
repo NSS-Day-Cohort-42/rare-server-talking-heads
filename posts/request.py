@@ -97,6 +97,23 @@ def get_posts_by_category(id):
             posts.append(post.__dict__)
 
     return json.dumps(posts)
-        
+
+def create_new_post(new_post):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute(""" 
+        INSERT INTO Post
+            ( title, content, pubdate, header_img, user_id, category_id )
+        VALUES
+            ( ?, ?, ?, ?, ?, ? );
+        """, (new_post['title'], new_post['content'], new_post['pubdate'],
+            new_post['header_img'], new_post['user_id'], new_post['category_id'], ))
+
+        id = db_cursor.lastrowid
+
+        new_post['id'] = id
+
+    return json.dumps(new_post)
 
    
