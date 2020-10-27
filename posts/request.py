@@ -100,5 +100,28 @@ def get_posts_by_category(id):
 
     return json.dumps(posts)
         
+def delete_post(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
 
-   
+        db_cursor.execute("""
+        DELETE FROM Post
+        WHERE id = ?
+        """, (id,))
+
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM Comment
+        WHERE post_id = ?
+        """, (id,))
+
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM TagPost
+        WHERE post_id = ?
+        """, (id,))
+
