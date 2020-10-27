@@ -6,7 +6,7 @@ from categories import get_all_categories, get_single_category, delete_category,
 
 from posts import get_all_posts, get_single_post, get_posts_by_category
 from users import create_user, get_user_by_email
-from comments import get_comments_by_post
+from comments import get_comments_by_post, create_comment, delete_comment
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -108,9 +108,14 @@ class HandleRequests(BaseHTTPRequestHandler):
 			new_resource = create_user(post_body)
 
 		if resource == "categories":
-			new_category = create_category(post_body)
+			new_resource = create_category(post_body)
+		
+		if resource == "comments":
+			new_resource = create_comment(post_body)
+		
 
 		self.wfile.write(f"{new_resource}".encode())
+
 
 	def do_PUT(self):
 		
@@ -137,6 +142,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			delete_category(id)
+		
+		if resource == "comments":
+			delete_comment(id)
 
 		self.wfile.write("".encode())
 

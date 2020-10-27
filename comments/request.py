@@ -38,3 +38,31 @@ def get_comments_by_post(fromThePostId):
     return json.dumps(comments)
 
 
+def create_comment(new_comment):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        INSERT INTO comment
+            (subject, content, user_id, post_id)
+        VALUES
+            (?,?,?,?)
+        """,(new_comment['subject'], new_comment['content'], new_comment['user_id'], new_comment['post_id']))
+
+        id = db_cursor.lastrowid
+
+        new_comment['id'] = id
+
+    return json.dumps(new_comment)
+
+
+def delete_comment(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM comment
+        WHERE id = ?
+        """, (id,))
+
+
