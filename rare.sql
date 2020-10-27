@@ -141,3 +141,43 @@ WHERE c.id = 2;
 
     
 JOIN Category c ON c.id = p.category_id;
+
+-- ** For testing Detailed Post view:
+INSERT INTO `Post` VALUES (6, 'The Title Of This Fake Post', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem integer vitae justo eget magna fermentum iaculis eu. Enim nunc faucibus a pellentesque sit amet porttitor eget. Facilisi etiam dignissim diam quis enim. Interdum posuere lorem ipsum dolor sit. Ac tortor vitae purus faucibus ornare. Mattis rhoncus urna neque viverra justo. Nec ultrices dui sapien eget mi proin sed. Augue neque gravida in fermentum et sollicitudin ac orci phasellus. In eu mi bibendum neque. Ultrices eros in cursus turpis. Nec ullamcorper sit amet risus nullam eget felis eget. Molestie at elementum eu facilisis sed odio morbi quis. Morbi tempus iaculis urna id volutpat lacus laoreet. Et sollicitudin ac orci phasellus egestas tellus. Tincidunt tortor aliquam nulla facilisi cras. Adipiscing tristique risus nec feugiat in fermentum posuere. Lectus arcu bibendum at varius vel.</p>
+
+<p>Gravida neque convallis a cras. Fermentum leo vel orci porta non pulvinar neque. Malesuada pellentesque elit eget gravida. Sit amet consectetur adipiscing elit pellentesque. Nulla facilisi cras fermentum odio eu. Pulvinar pellentesque habitant morbi tristique senectus et. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras. Vel pretium lectus quam id leo in vitae turpis massa. Ultricies leo integer malesuada nunc vel. Netus et malesuada fames ac turpis egestas sed. Arcu risus quis varius quam quisque.</p>
+
+<p>Mauris pharetra et ultrices neque ornare aenean. Pharetra convallis posuere morbi leo urna molestie at elementum eu. Pulvinar mattis nunc sed blandit libero. Egestas dui id ornare arcu odio. Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. In ornare quam viverra orci sagittis. Arcu odio ut sem nulla pharetra diam sit amet nisl. Lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat. Nisi quis eleifend quam adipiscing. Dolor sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Magna fringilla urna porttitor rhoncus dolor purus non enim. Volutpat est velit egestas dui id ornare arcu odio. Quis enim lobortis scelerisque fermentum dui. Amet nisl purus in mollis nunc. Adipiscing at in tellus integer feugiat scelerisque varius morbi enim. Adipiscing elit pellentesque habitant morbi tristique. Blandit turpis cursus in hac habitasse platea dictumst quisque sagittis.</p>', '2020-10-25', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', 1, 1)
+-- **
+
+
+--   ***  FOR TESTING DELETE POST FUNCTIONALITY: ***
+
+-- <1. Run the following 3 commands to create a post with attached tag and comment:
+INSERT INTO `Post` VALUES (7, 'Delete This Post', 'In order to delete this post from the React client you will have to be logged in as its author', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', '2020-10-25', 1, 1);
+INSERT INTO `TagPost` values (null, 1, 7);
+INSERT INTO 'Comment' VALUES (null, 'Comment for Post 7', 'This should automatically be deleted from databse when the post is deleted', 2, 7);
+-- >
+
+
+-- <2. Run the following and ensure all 3 items were created:
+SELECT * From Post
+WHERE id = 7;
+SELECT * FROM TagPost;
+SELECT * FROM Comment;
+-- >
+
+-- <3. From Postman, run a DELETE call with the following URL:
+--    http://localhost:8088/posts/7
+-- >
+
+-- <4. Run the following and ensure all 3 items were deleted:
+SELECT * From Post
+WHERE id = 7;
+SELECT * FROM TagPost;
+SELECT * FROM Comment;
+-- >
+
+--   *** (End of DELETE POST test) ***
+
+

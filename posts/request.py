@@ -115,5 +115,29 @@ def create_new_post(new_post):
         new_post['id'] = id
 
     return json.dumps(new_post)
+        
+def delete_post(id):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
 
-   
+        db_cursor.execute("""
+        DELETE FROM Post
+        WHERE id = ?
+        """, (id,))
+
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM Comment
+        WHERE post_id = ?
+        """, (id,))
+
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM TagPost
+        WHERE post_id = ?
+        """, (id,))
+
