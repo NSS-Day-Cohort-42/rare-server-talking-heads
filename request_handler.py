@@ -2,9 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
-
-
-from posts import get_all_posts, get_single_post, get_posts_by_category, create_new_post, delete_post
+from posts import get_all_posts, get_single_post, get_posts_by_category, create_new_post, delete_post, get_posts_by_user
 from users import create_user, get_user_by_email
 from comments import get_comments_by_post, create_comment, delete_comment
 from tags import get_all_tags, create_tag
@@ -87,6 +85,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 			if key == "category_id" and resource == "posts":
 				response = get_posts_by_category(value)
+
+			if key == "user_id" and resource == "posts":
+				response = get_posts_by_user(value)
 			
 			if key == "post_id" and resource == "comments":
 				response = get_comments_by_post(value)
