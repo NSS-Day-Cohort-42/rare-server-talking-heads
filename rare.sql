@@ -50,7 +50,7 @@ CREATE TABLE `Comment` (
 
 insert into `User` values (1, 'tbarette0', 'tbarette0@hugedomains.com', 'eUqsHs9bPdtf', 'Thomasina', 'Barette', 'bio');
 insert into `User`  values (2, 'tebenezer1', 'tebenezer1@twitter.com', 'F852pgF9ze9', 'Town', 'Ebenezer', 'bio');
-insert into `User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo', 'bio');
+insert into`User` values (3, 'cdelchecolo2', 'cdelchecolo2@youku.com', 'HQdyTmfePh', 'Constantia', 'Del Checolo', 'bio');
 insert into `User` values (4, 'bburnage3', 'bburnage3@reuters.com', 'M30RJ9Oq', 'Byron', 'Burnage', 'bio');
 insert into `User` values (5, 'ohullins4', 'ohullins4@nymag.com', 'xZwWKlA1nb4m', 'Octavia', 'Hullins', 'bio');
 insert into `User` values (6, 'jchaytor5', 'jchaytor5@dagondesign.com', 'urwjh8CDLuj', 'Jarad', 'Chaytor', 'bio');
@@ -149,11 +149,33 @@ INSERT INTO `Post` VALUES (6, 'The Title Of This Fake Post', '<p>Lorem ipsum dol
 -- **
 
 
+--   ***  FOR TESTING DELETE POST FUNCTIONALITY: ***
 
--- ** The following 3 commands are for testing Delete Post functionality:
-INSERT INTO `Post` VALUES (7, 'Delete This Post', 'In order to delete this post from the React client you will have to be logged in as its author', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', 1, 1);
-
+-- <1. Run the following 3 commands to create a post with attached tag and comment:
+INSERT INTO `Post` VALUES (7, 'Delete This Post', 'In order to delete this post from the React client you will have to be logged in as its author', 'https://www.americanrivers.org/wp-content/uploads/2015/09/NW-rivers-threatened-by-Red-Flat-Systems_KenMorrish-header.jpg', '2020-10-25', 1, 1);
 INSERT INTO `TagPost` values (null, 1, 7);
-
 INSERT INTO 'Comment' VALUES (null, 'Comment for Post 7', 'This should automatically be deleted from databse when the post is deleted', 2, 7);
--- **
+-- >
+
+
+-- <2. Run the following and ensure all 3 items were created:
+SELECT * From Post
+WHERE id = 7;
+SELECT * FROM TagPost;
+SELECT * FROM Comment;
+-- >
+
+-- <3. From Postman, run a DELETE call with the following URL:
+--    http://localhost:8088/posts/7
+-- >
+
+-- <4. Run the following and ensure all 3 items were deleted:
+SELECT * From Post
+WHERE id = 7;
+SELECT * FROM TagPost;
+SELECT * FROM Comment;
+-- >
+
+--   *** (End of DELETE POST test) ***
+
+
