@@ -130,6 +130,7 @@ def get_posts_by_user(id):
             posts.append(post.__dict__)
 
     return json.dumps(posts)
+
 def create_new_post(new_post):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
@@ -147,6 +148,27 @@ def create_new_post(new_post):
         new_post['id'] = id
 
     return json.dumps(new_post)
+
+def update_post(id, edited_post):
+    with sqlite3.connect("./rare.db") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        UPDATE Post
+            SET
+                title = ?,
+                content = ?,
+                header_img = ?,
+                category_id = ?
+        WHERE id = ?
+        """, (edited_post['title'], edited_post['content'], edited_post['header_img'], edited_post['category_id'], id))
+
+        rows_effected = db_cursor.rowcount
+
+        if rows_effected == 0:
+            return False
+        else:
+            return True
         
 def delete_post(id):
     with sqlite3.connect("./rare.db") as conn:
