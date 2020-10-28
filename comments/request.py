@@ -66,7 +66,7 @@ def delete_comment(id):
         """, (id,))
 
 
-def update_comment(id, subject, content):
+def update_comment(id, comment):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
 
@@ -74,9 +74,9 @@ def update_comment(id, subject, content):
         UPDATE Comment
         SET
         subject = ?,
-        content = ?,
+        content = ?
         WHERE id = ?
-        """, (subject, content, id))
+        """, (comment['subject'], comment['content'], id))
 
         rows_affected = db_cursor.rowcount
 
@@ -96,17 +96,13 @@ def get_single_comment(id):
         c.subject,
         c.content,
         c.user_id,
-        u.user_name,
-        c.post_id,
-        p.title
+        c.post_id
         FROM Comment C
-        JOIN User u ON u.id = c.user_id
-        JOIN Post p ON p.id = c.post_id
         WHERE c.id = ?
         """, (id,))
 
         data = db_cursor.fetchone()
 
-        comment = Comment(data['id'], data['subject'], data['content'], data['user_id'], data['user_name'], data['post_id'], data['title'])
+        comment = Comment(data['id'], data['subject'], data['content'], data['user_id'], data['post_id'])
 
     return json.dumps(comment.__dict__)
