@@ -66,7 +66,7 @@ def delete_comment(id):
         """, (id,))
 
 
-def update_comment(id, subject, content):
+def update_comment(id, comment):
     with sqlite3.connect("./rare.db") as conn:
         db_cursor = conn.cursor()
 
@@ -74,9 +74,9 @@ def update_comment(id, subject, content):
         UPDATE Comment
         SET
         subject = ?,
-        content = ?,
+        content = ?
         WHERE id = ?
-        """, (subject, content, id))
+        """, (comment['subject'], comment['content'], id))
 
         rows_affected = db_cursor.rowcount
 
