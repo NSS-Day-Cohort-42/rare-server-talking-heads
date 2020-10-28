@@ -84,3 +84,29 @@ def update_comment(id, comment):
             return False
         else:
             return True
+
+def get_single_comment(id):
+    with sqlite3.connect("./rare.db") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute(""" 
+        SELECT
+        c.id,
+        c.subject,
+        c.content,
+        c.user_id,
+        u.user_name,
+        c.post_id,
+        p.title
+        FROM Comment C
+        JOIN User u ON u.id = c.user_id
+        JOIN Post p ON p.id = c.post_id
+        WHERE c.id = ?
+        """, (id,))
+
+        data = db_cursor.fetchone()
+
+        comment = Comment(data['id'], data['subject'], data['content'], data['user_id'], data['user_name'], data['post_id'], data['title'])
+
+    return json.dumps(comment.__dict__)
