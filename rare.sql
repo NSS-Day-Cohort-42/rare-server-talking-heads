@@ -172,7 +172,7 @@ SELECT * FROM Comment;
 -- >
 
 -- <4. Run the following and ensure all 3 items were deleted:
-SELECT * From Post
+SELECT * From Post;
 WHERE id = 7;
 SELECT * FROM TagPost;
 SELECT * FROM Comment;
@@ -210,7 +210,7 @@ FROM Post p
 JOIN User u ON u.id = p.user_id
 JOIN Category c ON c.id = p.category_id
 JOIN Comment com on com.post_id = p.id
-WHERE p.id = 1;
+WHERE p.id = 26;
 
 
 SELECT
