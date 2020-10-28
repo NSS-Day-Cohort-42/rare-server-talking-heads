@@ -97,7 +97,6 @@ SELECT * FROM TagPost;
 SELECT * FROM Comment;
 SELECT * FROM User;
 
-DELETE FROM Post;
 
 
 SELECT  
@@ -228,3 +227,12 @@ FROM Post p
 JOIN User u ON u.id = p.user_id
 JOIN Category c ON c.id = p.category_id
 WHERE c.id = 1;
+
+SELECT
+    tp.id,
+    tp.tag_id,
+    tp.post_id,
+    t.name
+FROM TagPost tp
+JOIN Tag t ON t.id = tp.tag_id
+WHERE tp.id = 2;

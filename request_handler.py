@@ -6,6 +6,7 @@ from posts import get_all_posts, get_single_post, get_posts_by_category, create_
 from users import create_user, get_user_by_email
 from comments import get_comments_by_post, create_comment, delete_comment
 from tags import get_all_tags, create_tag
+from TagsPosts import create_tagPost, get_tagPosts
 
 class HandleRequests(BaseHTTPRequestHandler):
 
@@ -79,6 +80,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 			if resource == "tags":
 				response = f"{get_all_tags()}"
+
+			if resource == "tagPosts":
+				response = get_tagPosts()
 		
 		elif len(parsed) == 3:
 			(resource, key, value) = parsed
@@ -92,6 +96,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 			if key == "post_id" and resource == "comments":
 				response = get_comments_by_post(value)
 			
+			# if key == "post_id" and resource == "tags":
+			# 	response = get_single_post_tags(value)
 
 			if key == "email" and resource == "users":
 				response = get_user_by_email(value)
@@ -122,12 +128,14 @@ class HandleRequests(BaseHTTPRequestHandler):
 		if resource == "comments":
 			new_resource = create_comment(post_body)
 		
-
 		if resource == "posts":
 			new_resource = create_new_post(post_body)
 
 		if resource == "tags":
 			new_resource = create_tag(post_body)
+
+		if resource == "tagPosts":
+			new_resource = create_tagPost(post_body)
 
 		self.wfile.write(f"{new_resource}".encode())
 
