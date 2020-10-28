@@ -59,7 +59,7 @@ insert into `User`  values (8, 'dphelan7', 'dphelan7@netvibes.com', '750nSjm2Z6E
 insert into `User` values (9, 'klumox8', 'klumox8@yellowbook.com', '8VzOOu', 'Kayla', 'Lumox', 'bio');
 insert into `User` values (10, 'chaselup9', 'chaselup9@imageshack.us', 'hK6DjKmCFwK1', 'Caryl', 'Haselup', 'bio');
 
-INSERT INTO `Category` values (null, "Category 1");
+INSERT INTO `Category` values (1, "Category 1");
 INSERT INTO `Category` values (null, "Category 2");
 INSERT INTO `Category` values (null, "Category 3");
 INSERT INTO `Category` values (null, "Category 4");
@@ -71,11 +71,11 @@ INSERT INTO `Tag` values (null, "Tag 3");
 INSERT INTO `Tag` values (null, "Tag 4");
 INSERT INTO `Tag` values (null, "Tag 5");
 
-insert into `Post`  values (1, 'cblunsden0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius viverra nibh. Praesent semper eleifend nisi, a commodo dolor hendrerit vel. Nam viverra hendrerit lacus, id ullamcorper velit finibus quis. Etiam a ante enim. Aliquam egestas molestie mi cursus commodo. Aenean quis rutrum nibh. Mauris venenatis laoreet tortor, id porta dui iaculis non. Vestibulum leo nunc, auctor quis quam ut, laoreet varius quam. Pellentesque eget nisl suscipit, viverra dolor ac, consectetur leo. Phasellus sagittis diam nec sapien rhoncus ornare. Duis at ante mollis, porttitor nibh at, elementum sapien. Curabitur laoreet, tortor at pharetra aliquam, enim augue pulvinar purus, et tincidunt quam ex et arcu.', '2020-1-1', null, 1, 1);
-insert into `Post`  values (2, 'imcquode1', 'Donec scelerisque urna est, vitae vulputate risus mollis quis. Maecenas ullamcorper ut mi non pellentesque. Fusce at mollis nisl, at gravida nunc. Maecenas ut fermentum lectus. Etiam finibus placerat sapien sed dignissim. Donec purus nunc, mattis in ipsum et, hendrerit dictum diam. Nunc iaculis posuere efficitur. Aliquam nec venenatis metus. Mauris dignissim elementum justo ac suscipit. Mauris dignissim, tortor tristique consectetur pellentesque, ante ipsum volutpat justo, quis vulputate ante felis id turpis. Nullam laoreet, tortor et ullamcorper congue, odio elit vestibulum orci, et efficitur velit sem at est. Nullam eget magna a tortor efficitur tempor. In hendrerit, felis cursus efficitur viverra, lorem lectus convallis dui, sagittis suscipit nisl est sit amet odio. Duis a efficitur urna. Cras metus lacus, pretium vel eleifend quis, congue at nisl. Vestibulum in vestibulum enim.','2020-2-1', null, 2, 2);
-insert into `Post` values (3, 'bquare2', 'Praesent dapibus odio eget risus ultrices viverra. Aliquam erat volutpat. Pellentesque quis libero pretium, finibus metus quis, volutpat velit. Nam nunc arcu, tempus sit amet vestibulum vitae, placerat sit amet ligula. Praesent nunc odio, aliquam ac iaculis vitae, rutrum a elit. Nam quam enim, egestas vitae bibendum non, lobortis in nisi. Praesent ac euismod turpis. Sed suscipit neque ex, vel fermentum ante condimentum nec. Pellentesque sodales luctus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque sem turpis, rhoncus vitae feugiat ut, laoreet ac lectus. Curabitur quam felis, vestibulum eu tortor eu, finibus feugiat magna. Nulla enim metus, ultrices lobortis tempor molestie, facilisis eu lacus.', '2020-3-1', null, 3, 3);
-insert into `Post`  values (4, 'tlauridsen3', 'Suspendisse magna ligula, laoreet sed tristique et, varius nec velit. Praesent nisi diam, imperdiet ut eleifend sed, porttitor eu eros. Mauris gravida, massa sed sollicitudin aliquet, augue libero porta urna, vel convallis arcu ligula ac nibh. Suspendisse odio lectus, efficitur sit amet auctor nec, dignissim non eros. Suspendisse ultrices eros ac porta accumsan. In id tempor eros. Donec vel orci sed ligula rhoncus tristique. Nam eu accumsan augue. Nullam sollicitudin odio nec luctus dignissim. Ut sed velit sed dolor aliquam placerat vel eu turpis. Phasellus pretium tellus in est tempus, eget vestibulum ligula luctus. Donec sed arcu non justo tempus semper. Nulla ut urna neque.', '2020-4-1', null, 4, 4);
-insert into `Post` values (5, 'dsloper4', 'Pellentesque purus tellus, dignissim vitae iaculis a, elementum ut erat. Curabitur lobortis egestas nibh ac mattis. Vestibulum porta sed magna nec elementum. Aenean bibendum iaculis lacus. Phasellus suscipit, nibh ac pretium porta, eros mi tincidunt diam, vel molestie metus justo in sem. Cras fermentum enim convallis sollicitudin vestibulum. Praesent non tempus ex.', '2020-5-1', null, 5, 5);
+insert into `Post`  values (null, 'cblunsden0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius viverra nibh. Praesent semper eleifend nisi, a commodo dolor hendrerit vel. Nam viverra hendrerit lacus, id ullamcorper velit finibus quis. Etiam a ante enim. Aliquam egestas molestie mi cursus commodo. Aenean quis rutrum nibh. Mauris venenatis laoreet tortor, id porta dui iaculis non. Vestibulum leo nunc, auctor quis quam ut, laoreet varius quam. Pellentesque eget nisl suscipit, viverra dolor ac, consectetur leo. Phasellus sagittis diam nec sapien rhoncus ornare. Duis at ante mollis, porttitor nibh at, elementum sapien. Curabitur laoreet, tortor at pharetra aliquam, enim augue pulvinar purus, et tincidunt quam ex et arcu.', '1603821925438', null, 1, 1);
+insert into `Post`  values (null, 'imcquode1', 'Donec scelerisque urna est, vitae vulputate risus mollis quis. Maecenas ullamcorper ut mi non pellentesque. Fusce at mollis nisl, at gravida nunc. Maecenas ut fermentum lectus. Etiam finibus placerat sapien sed dignissim. Donec purus nunc, mattis in ipsum et, hendrerit dictum diam. Nunc iaculis posuere efficitur. Aliquam nec venenatis metus. Mauris dignissim elementum justo ac suscipit. Mauris dignissim, tortor tristique consectetur pellentesque, ante ipsum volutpat justo, quis vulputate ante felis id turpis. Nullam laoreet, tortor et ullamcorper congue, odio elit vestibulum orci, et efficitur velit sem at est. Nullam eget magna a tortor efficitur tempor. In hendrerit, felis cursus efficitur viverra, lorem lectus convallis dui, sagittis suscipit nisl est sit amet odio. Duis a efficitur urna. Cras metus lacus, pretium vel eleifend quis, congue at nisl. Vestibulum in vestibulum enim.','1603821925438', null, 2, 2);
+insert into `Post` values (null, 'bquare2', 'Praesent dapibus odio eget risus ultrices viverra. Aliquam erat volutpat. Pellentesque quis libero pretium, finibus metus quis, volutpat velit. Nam nunc arcu, tempus sit amet vestibulum vitae, placerat sit amet ligula. Praesent nunc odio, aliquam ac iaculis vitae, rutrum a elit. Nam quam enim, egestas vitae bibendum non, lobortis in nisi. Praesent ac euismod turpis. Sed suscipit neque ex, vel fermentum ante condimentum nec. Pellentesque sodales luctus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque sem turpis, rhoncus vitae feugiat ut, laoreet ac lectus. Curabitur quam felis, vestibulum eu tortor eu, finibus feugiat magna. Nulla enim metus, ultrices lobortis tempor molestie, facilisis eu lacus.', '1603821925438', null, 3, 3);
+insert into `Post`  values (null, 'tlauridsen3', 'Suspendisse magna ligula, laoreet sed tristique et, varius nec velit. Praesent nisi diam, imperdiet ut eleifend sed, porttitor eu eros. Mauris gravida, massa sed sollicitudin aliquet, augue libero porta urna, vel convallis arcu ligula ac nibh. Suspendisse odio lectus, efficitur sit amet auctor nec, dignissim non eros. Suspendisse ultrices eros ac porta accumsan. In id tempor eros. Donec vel orci sed ligula rhoncus tristique. Nam eu accumsan augue. Nullam sollicitudin odio nec luctus dignissim. Ut sed velit sed dolor aliquam placerat vel eu turpis. Phasellus pretium tellus in est tempus, eget vestibulum ligula luctus. Donec sed arcu non justo tempus semper. Nulla ut urna neque.', '1603821925438', null, 4, 4);
+insert into `Post` values (null, 'dsloper4', 'Pellentesque purus tellus, dignissim vitae iaculis a, elementum ut erat. Curabitur lobortis egestas nibh ac mattis. Vestibulum porta sed magna nec elementum. Aenean bibendum iaculis lacus. Phasellus suscipit, nibh ac pretium porta, eros mi tincidunt diam, vel molestie metus justo in sem. Cras fermentum enim convallis sollicitudin vestibulum. Praesent non tempus ex.', '1603821925438', null, 5, 5);
 
 INSERT INTO `TagPost` values (null, 1,3);
 INSERT INTO `TagPost` values (null, 2,1 );
@@ -96,6 +96,8 @@ SELECT * FROM Post;
 SELECT * FROM TagPost;
 SELECT * FROM Comment;
 SELECT * FROM User;
+
+DELETE FROM Post;
 
 
 SELECT  
@@ -179,4 +181,50 @@ SELECT * FROM Comment;
 --   *** (End of DELETE POST test) ***
 
 
-DELETE From Tag;
+SELECT 
+    com.id,
+    com.subject,
+    com.content,
+    com.user_id,
+    com.post_id as PostIdentifier,
+    u.user_name as UserName
+    
+FROM Comment com
+JOIN User u on u.id = com.user_id
+
+WHERE com.post_id = 2;   
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+JOIN Comment com on com.post_id = p.id
+WHERE p.id = 1;
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+WHERE c.id = 1;
