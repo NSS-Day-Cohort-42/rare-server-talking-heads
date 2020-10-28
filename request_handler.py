@@ -4,6 +4,7 @@ import json
 from categories import get_all_categories, get_single_category, delete_category, create_category, update_category
 from posts import get_all_posts, get_single_post, get_posts_by_category, create_new_post, delete_post, get_posts_by_user, update_post
 from users import create_user, get_user_by_email
+from comments import get_comments_by_post, create_comment, delete_comment
 from tags import get_all_tags, create_tag
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -88,6 +89,10 @@ class HandleRequests(BaseHTTPRequestHandler):
 			if key == "user_id" and resource == "posts":
 				response = get_posts_by_user(value)
 			
+			if key == "post_id" and resource == "comments":
+				response = get_comments_by_post(value)
+			
+
 			if key == "email" and resource == "users":
 				response = get_user_by_email(value)
 			
@@ -112,7 +117,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 			new_resource = create_user(post_body)
 
 		if resource == "categories":
-			new_category = create_category(post_body)
+			new_resource = create_category(post_body)
+		
+		if resource == "comments":
+			new_resource = create_comment(post_body)
+		
 
 		if resource == "posts":
 			new_resource = create_new_post(post_body)
@@ -121,6 +130,7 @@ class HandleRequests(BaseHTTPRequestHandler):
 			new_resource = create_tag(post_body)
 
 		self.wfile.write(f"{new_resource}".encode())
+
 
 	def do_PUT(self):
 		
@@ -154,6 +164,9 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 		if resource == "categories":
 			delete_category(id)
+		
+		if resource == "comments":
+			delete_comment(id)
 
 		if resource == "posts":
 			delete_post(id)

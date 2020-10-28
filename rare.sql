@@ -59,7 +59,7 @@ insert into `User`  values (8, 'dphelan7', 'dphelan7@netvibes.com', '750nSjm2Z6E
 insert into `User` values (9, 'klumox8', 'klumox8@yellowbook.com', '8VzOOu', 'Kayla', 'Lumox', 'bio');
 insert into `User` values (10, 'chaselup9', 'chaselup9@imageshack.us', 'hK6DjKmCFwK1', 'Caryl', 'Haselup', 'bio');
 
-INSERT INTO `Category` values (null, "Category 1");
+INSERT INTO `Category` values (1, "Category 1");
 INSERT INTO `Category` values (null, "Category 2");
 INSERT INTO `Category` values (null, "Category 3");
 INSERT INTO `Category` values (null, "Category 4");
@@ -181,3 +181,50 @@ SELECT * FROM Comment;
 --   *** (End of DELETE POST test) ***
 
 
+SELECT 
+    com.id,
+    com.subject,
+    com.content,
+    com.user_id,
+    com.post_id as PostIdentifier,
+    u.user_name as UserName
+    
+FROM Comment com
+JOIN User u on u.id = com.user_id
+
+WHERE com.post_id = 2;   
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+JOIN Comment com on com.post_id = p.id
+WHERE p.id = 1;
+
+
+SELECT
+    p.id,
+    p.title,
+    p.content,
+    p.pubdate,
+    p.header_img,
+    u.user_name,
+    p.user_id,
+    c.name AS category_name,
+    p.category_id,
+    com.content as CommentStuff
+FROM Post p
+JOIN User u ON u.id = p.user_id
+JOIN Category c ON c.id = p.category_id
+WHERE c.id = 1;

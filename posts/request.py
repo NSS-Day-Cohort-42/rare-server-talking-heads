@@ -1,7 +1,8 @@
 import sqlite3
 import json
 
-from models import Post
+from models import Post, Comment
+
 
 def get_all_posts():
     with sqlite3.connect("./rare.db") as conn:
@@ -81,6 +82,7 @@ def get_posts_by_category(id):
             p.user_id,
             c.name AS category_name,
             p.category_id
+			
         FROM Post p
         JOIN User u ON u.id = p.user_id
         JOIN Category c ON c.id = p.category_id
